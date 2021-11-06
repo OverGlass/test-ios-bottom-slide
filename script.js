@@ -1,10 +1,12 @@
 let posY = [];
 const slider = document.querySelector(".slider");
+const input = document.querySelector(".slider__input");
 
 function openSlider() {
   slider.classList.remove("slider--close--really");
   slider.classList.remove("slider--close");
   slider.classList.add("slider--open");
+  input.focus();
 }
 
 function closeSlider() {

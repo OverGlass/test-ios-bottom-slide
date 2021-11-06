@@ -1,5 +1,10 @@
+html {
+  height: 100%;
+}
 body {
   background-image: url("https://iphonesoft.fr/images/2021/06/wallpapers/macos-12-monterey-wallpaper-dark.jpg");
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .slider {
@@ -39,8 +44,8 @@ body {
 .slider-content {
   transition: transform 0.2s ease-out;
   position: fixed;
-  top: 50vh;
   left: 0;
+  height: 30vh;
   bottom: 0;
   right: 0;
   background-color: #fff;
