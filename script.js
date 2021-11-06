@@ -16,6 +16,7 @@ function closeSlider() {
 }
 
 function getPosY(e) {
+  e.preventDefault();
   posY.push(e.touches[0].clientY);
   // if values are negative, set to 0
   const pos = posY.reduce((a, b) => {
