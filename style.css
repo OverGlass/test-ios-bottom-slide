@@ -1,0 +1,78 @@
+body {
+  background-image: url("https://iphonesoft.fr/images/2021/06/wallpapers/macos-12-monterey-wallpaper-dark.jpg");
+}
+
+.slider {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+.slider--close .slider-content {
+  transform: translateY(100%);
+}
+
+.slider--open .slider-content {
+  transform: translateY(0%);
+}
+
+.slider--close .slider-overlay {
+  opacity: 0;
+}
+.slider--close--really .slider-overlay {
+  visibility: hidden;
+}
+
+.slider--open .slider-overlay {
+  opacity: initial;
+}
+
+.slider-overlay {
+  transition: opacity 0.5s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.slider-content {
+  transition: transform 0.2s ease-out;
+  position: fixed;
+  top: 50vh;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 20px;
+  overflow: auto;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.slider-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  font-size: 1em;
+  color: #000;
+  cursor: pointer;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
