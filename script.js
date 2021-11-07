@@ -8,7 +8,7 @@ function openSlider() {
   slider.classList.remove("slider--close");
   slider.classList.add("slider--open");
   lastScrollTop = window.scrollY;
-  // iosFocus(input, 300);
+  iosFocus(input, 300);
 }
 
 function closeSlider() {
