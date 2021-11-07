@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="content">
+      <h1>couocu</h1>
+    </section>
+    <section class="slider slider--close">
+      <div
+        class="slider-overlay"
+        onclick="closeSlider()"
+      ></div>
+      <div class="slider-content">
+        <div class="slider-close" onclick="closeSlider()">
+          close
+        </div>
+        <h2>Coucou, donne mon ton nom !</h2>
+        <form action="">
+          <div class="input">
+            <span onclick="focusInputFixMove(event)"></span>
+            <input
+              class="slider__input3"
+              type="text"
+              placeholder="Nom"
+            />
+          </div>
+          <br />
+          <div class="input">
+            <span onclick="focusInputFixMove(event)"></span>
+            <input
+              class="slider__input3"
+              type="text"
+              placeholder="Nom"
+            />
+          </div>
+          <br />
+          <div class="input">
+            <span onclick="focusInputFixMove(event)"></span>
+            <input
+              class="slider__input3"
+              type="text"
+              placeholder="Nom"
+            />
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+  <script>
+    function focusInputFixMove(event) {
+      const input =
+        event.currentTarget.parentElement.querySelector(
+          "input"
+        );
+      const wHeight = window.innerHeight;
+      const hereThatDontMove = wHeight / 3;
+      event.preventDefault();
+      input.classList.add("false");
+      input.style.top = hereThatDontMove + "px";
+      console.log(input.style.top);
+      input.focus();
+      input.classList.remove("false");
+      input.style.top = "";
+    }
+    document.querySelectorAll("input").forEach(input => {
+      input.addEventListener("focus", () => {
+        input.parentNode
+          .querySelector("span")
+          .classList.add("releave");
+      });
+      input.addEventListener("blur", () => {
+        input.parentNode
+          .querySelector("span")
+          .classList.remove("releave");
+      });
+    });
+  </script>
+  <style>
+    html,
+    body {
+      background-color: red;
+    }
+    .false {
+      position: fixed;
+      top: 33.3%;
+      opacity: 0.1;
+      width: 10px;
+      height: 10px;
+      transform: translateX(-1000px);
+    }
+
+    .input {
+      position: relative;
+      display: inline;
+    }
+
+    .input span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      opacity: 0;
+      visibility: visible;
+    }
+
+    .input span.releave {
+      visibility: hidden;
+    }
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: scroll;
+    }
+
+    .slider-overlay {
+      transition: opacity 0.5s ease-in-out;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .slider-content {
+      position: relative;
+      transition: transform 0.2s ease-out;
+      margin-top: 20vh;
+      height: 100vh;
+      background-color: #fff;
+      padding: 20px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .slider-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px;
+      font-size: 1em;
+      color: #000;
+      cursor: pointer;
+    }
+  </style>
+</html>
