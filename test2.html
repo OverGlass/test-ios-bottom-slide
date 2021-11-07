@@ -12,8 +12,13 @@
   <body>
     <section class="content">
       <h1>couocu</h1>
+      <button onclick="openSlider()" id="button">
+        Show Slide up
+      </button>
     </section>
-    <section class="slider slider--close">
+    <section
+      class="slider slider--close slider--close--really"
+    >
       <div
         class="slider-overlay"
         onclick="closeSlider()"
@@ -67,8 +72,11 @@
       input.style.top = hereThatDontMove + "px";
       console.log(input.style.top);
       input.focus();
-      input.classList.remove("false");
-      input.style.top = "";
+      setTimeout(() => {
+        input.classList.remove("false");
+        input.style.top = "";
+      }, 0);
+      // input.classList.remove("false");
     }
     document.querySelectorAll("input").forEach(input => {
       input.addEventListener("focus", () => {
@@ -82,15 +90,53 @@
           .classList.remove("releave");
       });
     });
+
+    const slider = document.querySelector(".slider");
+    const sliderContent = document.querySelector(
+      ".slider-content"
+    );
+
+    function openSlider() {
+      document.body.style.overflow = "hidden";
+      slider.classList.remove("slider--close--really");
+      slider.classList.remove("slider--close");
+      slider.classList.add("slider--open");
+      // lastScrollTop = window.scrollY;
+      // iosFocus(input, 300);
+    }
+
+    function closeSlider() {
+      document.body.style.overflow = "auto";
+      slider.classList.remove("slider--open");
+      slider.classList.add("slider--close");
+      // window.scrollTo(0, lastScrollTop, "smooth");
+      setTimeout(() => {
+        slider.classList.add("slider--close--really");
+      }, 500);
+    }
+
+    slider.addEventListener("scroll", e => {
+      const scrollTop = e.target.scrollTop;
+      if (-scrollTop > 100) closeSlider();
+      // if (scrollTop > 200) {
+      //   slider.style.overflow = "hidden";
+      //   sliderContent.overflow = "auto";
+      // } else {
+      //   slider.style.overflow = "auto";
+      //   sliderContent.overflow = "hidden";
+      // }
+    });
   </script>
   <style>
     html,
     body {
       background-color: red;
+      height: 100vh;
+      /* height: -webkit-fill-available; */
     }
     .false {
       position: fixed;
-      top: 33.3%;
+      /* top: 33.3%; */
       opacity: 0.1;
       width: 10px;
       height: 10px;
@@ -116,14 +162,19 @@
       visibility: hidden;
     }
     .slider {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      bottom: 0;
+      max-height: 100vh;
+      height: 100%;
+      height: -webkit-fill-available;
+      min-height: 100vh;
       overflow: scroll;
     }
-
+    .slider.slider--open {
+      visibility: visible;
+    }
     .slider-overlay {
       transition: opacity 0.5s ease-in-out;
       position: fixed;
@@ -131,14 +182,17 @@
       left: 0;
       bottom: 0;
       right: 0;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
     .slider-content {
       position: relative;
       transition: transform 0.2s ease-out;
       margin-top: 20vh;
-      height: 100vh;
+      height: 80vh;
+      /* height: 100vh; */
+      /* height: -webkit-fill-available; */
+      z-index: 10;
       background-color: #fff;
       padding: 20px;
       border-top-left-radius: 20px;
@@ -153,6 +207,25 @@
       font-size: 1em;
       color: #000;
       cursor: pointer;
+    }
+
+    .slider--close .slider-content {
+      transform: translateY(100%);
+    }
+
+    .slider--open .slider-content {
+      transform: translateY(0%);
+    }
+
+    .slider--close .slider-overlay {
+      opacity: 0;
+    }
+    .slider--close--really.slider {
+      visibility: hidden;
+    }
+
+    .slider--open .slider-overlay {
+      opacity: initial;
     }
   </style>
 </html>

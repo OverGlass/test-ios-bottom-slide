@@ -4,6 +4,7 @@ const slider = document.querySelector(".slider");
 const input = document.querySelector(".slider__input");
 
 function openSlider() {
+  document.body.style.overflow = "hidden";
   slider.classList.remove("slider--close--really");
   slider.classList.remove("slider--close");
   slider.classList.add("slider--open");
@@ -12,6 +13,7 @@ function openSlider() {
 }
 
 function closeSlider() {
+  document.body.style.overflow = "auto";
   slider.classList.remove("slider--open");
   slider.classList.add("slider--close");
   window.scrollTo(0, lastScrollTop, "smooth");
