@@ -2,9 +2,9 @@ html {
   height: 100%;
 }
 body {
-  background-image: url("https://iphonesoft.fr/images/2021/06/wallpapers/macos-12-monterey-wallpaper-dark.jpg");
   min-height: 100vh;
-  overflow: hidden;
+  background-image: url("https://iphonesoft.fr/images/2021/06/wallpapers/macos-12-monterey-wallpaper-dark.jpg");
+  /* overflow: hidden; */
 }
 
 .slider {
